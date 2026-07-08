@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Cafe and More | Premium Vegetarian Café, Ahmedabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black-1:#0a0905;
+    --black-2:#080705;
+    --black-3:#050403;
+    --gold:#C9A84C;
+    --cream:#F5F0E8;
+    --cream-text:#1a1610;
+    --white:#ffffff;
+    --dim-white:rgba(245,240,232,0.62);
+    --serif:'Playfair Display', serif;
+    --sans:'Inter', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black-1);
+    color:var(--white);
+    font-family:var(--sans);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;width:100%;height:100%;object-fit:cover;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  ::selection{background:var(--gold);color:var(--black-1);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  /* ---------- graceful image fallback ---------- */
+  .img-frame{ position:relative; width:100%; height:100%; overflow:hidden; background:#0d0b08; }
+  .img-frame.img-missing{ display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 40%, #1c1712, #050403); }
+  .img-frame.img-missing img{ display:none; }
+  .img-frame.img-missing::after{
+    content:attr(data-label);
+    color:var(--gold); font-family:var(--serif); font-style:italic;
+    font-size:0.95rem; text-align:center; padding:24px; opacity:0.7; line-height:1.5;
+  }
+
+  .eyebrow{
+    font-family:var(--serif); font-style:italic; color:var(--gold);
+    font-size:1.15rem; letter-spacing:0.02em; display:inline-block; margin-bottom:14px;
+  }
+  .section-pad{padding:120px 8vw;}
+  @media (max-width:768px){ .section-pad{padding:80px 6vw;} }
+
+  /* ---------- decorative dots ---------- */
+  .dot{ position:absolute; border-radius:50%; pointer-events:none; }
+  .dot.solid{background:var(--gold);}
+  .dot.ring{border:1px solid var(--white); background:transparent; opacity:0.35;}
+  .dot.ring-gold{border:1px solid var(--gold); background:transparent; opacity:0.5;}
+
+  @keyframes float-bob{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-18px) rotate(1.2deg); }
+  }
+  .animate-float-bob{ animation:float-bob 6s ease-in-out infinite; }
+
+  @keyframes float-scatter{
+    0%,100%{ transform:translate(0,0); opacity:0.7;}
+    50%{ transform:translate(6px,-14px); opacity:1;}
+  }
+  @keyframes float-scatter-2{
+    0%,100%{ transform:translate(0,0); opacity:0.5;}
+    50%{ transform:translate(-8px,10px); opacity:0.9;}
+  }
+  .animate-float-scatter{ animation:float-scatter 5s ease-in-out infinite; }
+  .animate-float-scatter-2{ animation:float-scatter-2 6.5s ease-in-out infinite; }
+
+  /* ---------- scroll reveal (headings/cards) ---------- */
+  .reveal{
+    opacity:0; transform:translateY(30px);
+    transition:opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-left{ opacity:0; transform:translateX(-40px); transition:opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal-left.in{ opacity:1; transform:translateX(0); }
+  .reveal-right{ opacity:0; transform:translateX(40px); transition:opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal-right.in{ opacity:1; transform:translateX(0); }
+
+  /* ================= NAVBAR ================= */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 5vw; background:transparent; border-bottom:1px solid transparent;
+    transition:background 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
+  }
+  header.scrolled{
+    background:rgba(8,7,5,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 5vw;
+  }
+  .logo{ font-family:var(--serif); font-style:italic; font-size:1.7rem; color:var(--gold); }
+  nav.main-nav{ display:flex; gap:38px; }
+  nav.main-nav a{
+    font-size:0.82rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--dim-white); font-weight:500; position:relative; padding-bottom:4px;
+    transition:color 0.3s ease;
+  }
+  nav.main-nav a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold);
+    transition:width 0.3s ease;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active{ color:var(--white); }
+  nav.main-nav a:hover::after, nav.main-nav a.active::after{ width:100%; }
+
+  .nav-right{ display:flex; align-items:center; gap:24px; }
+  .nav-phone{ font-size:0.9rem; letter-spacing:0.03em; color:var(--dim-white); }
+  .btn-outline{
+    border:1px solid var(--gold); color:var(--gold); background:transparent; padding:11px 22px;
+    font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
+    transition:background 0.3s ease, color 0.3s ease; display:inline-block;
+  }
+  .btn-outline:hover{ background:var(--gold); color:var(--black-1); }
+
+  .nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; }
+  .nav-toggle span{ width:26px; height:1px; background:var(--white); }
+
+  @media (max-width:980px){
+    nav.main-nav{
+      position:fixed; top:0; right:0; height:100vh; width:78vw; max-width:340px;
+      background:var(--black-2); flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:0 40px; gap:30px; transform:translateX(100%); transition:transform 0.4s ease;
+      border-left:1px solid rgba(201,168,76,0.15);
+    }
+    nav.main-nav.open{ transform:translateX(0); }
+    .nav-phone{ display:none; }
+    .nav-toggle{ display:flex; }
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; padding:0 5vw; position:relative;
+    background:radial-gradient(ellipse at 75% 40%, #120f0a 0%, var(--black-1) 60%);
+    overflow:hidden;
+  }
+  .hero-inner{ display:flex; align-items:center; width:100%; gap:40px; padding-top:80px; }
+  .hero-left{ width:46%; }
+  .hero-right{ width:54%; position:relative; display:flex; justify-content:center; align-items:center; }
+  .hero h1{ font-family:var(--serif); font-size:clamp(2.6rem, 5.2vw, 4.6rem); line-height:1.08; font-weight:500; }
+  .hero h1 em{ font-style:italic; font-weight:400; }
+  .hero h1 .bold-line{ font-weight:800; font-style:normal; }
+  .hero-sub{ color:var(--dim-white); margin:26px 0 38px; max-width:420px; font-size:1rem; line-height:1.6; }
+  .hero-cta{
+    display:inline-block; border:1px solid var(--white); color:var(--white); padding:18px 36px;
+    font-size:0.8rem; letter-spacing:0.16em; text-transform:uppercase;
+    transition:background 0.35s ease, color 0.35s ease;
+  }
+  .hero-cta:hover{ background:var(--white); color:var(--black-1); }
+  .hero-rating{ display:flex; align-items:center; gap:12px; margin-top:44px; }
+  .stars{ color:var(--gold); letter-spacing:2px; font-size:1.1rem; }
+  .rating-text{ color:var(--dim-white); font-size:0.85rem; letter-spacing:0.03em; }
+
+  .hero-img-wrap{ position:relative; width:min(560px, 90%); aspect-ratio:1/1; border-radius:50%; overflow:hidden; }
+  .hero-img-wrap .img-frame{ border-radius:50%; }
+
+  @media (max-width:980px){
+    .hero-inner{ flex-direction:column; padding-top:120px; gap:60px; }
+    .hero-left, .hero-right{ width:100%; }
+    .hero-sub{ max-width:100%; }
+  }
+
+  /* ================= ABOUT / EVENTS SPLIT ================= */
+  .split{ display:flex; min-height:90vh; position:relative; }
+  .split-media{ width:50%; position:relative; overflow:hidden; min-height:520px; }
+  .split-card{
+    width:50%; background:var(--cream); color:var(--cream-text); padding:90px 6vw;
+    display:flex; flex-direction:column; justify-content:center; position:relative; z-index:2;
+    box-shadow:-40px 0 80px rgba(0,0,0,0.45);
+  }
+  .split.mirrored{ flex-direction:row-reverse; }
+  .split.mirrored .split-card{ box-shadow:40px 0 80px rgba(0,0,0,0.45); }
+  .split-card .eyebrow{ color:#a5843a; }
+  .split-card h2{ font-family:var(--serif); font-size:clamp(2.1rem,3.4vw,3rem); font-weight:700; margin-bottom:28px; color:var(--cream-text); }
+  .split-card p{ color:#4a4438; line-height:1.85; margin-bottom:20px; font-size:1rem; }
+  .split-link{
+    margin-top:12px; color:#a5843a; font-weight:600; font-size:0.9rem; letter-spacing:0.03em;
+    display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid #a5843a; padding-bottom:3px; width:fit-content;
+  }
+
+  @media (max-width:900px){
+    .split, .split.mirrored{ flex-direction:column; }
+    .split-media, .split-card{ width:100%; }
+    .split-card{ padding:60px 7vw; box-shadow:none; }
+    .split-media{ min-height:340px; }
+  }
+
+  .events-list{ margin:8px 0 30px; }
+  .event-item{ padding:22px 0; border-bottom:1px solid rgba(26,22,16,0.12); }
+  .event-item:first-child{ padding-top:0; }
+  .event-top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .event-name{ font-family:var(--serif); font-weight:700; font-size:1.15rem; }
+  .event-date{ color:var(--gold); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
+  .event-time{ display:flex; align-items:center; gap:8px; color:#7a7263; font-size:0.85rem; margin:8px 0 6px; }
+  .event-detail{ color:#4a4438; font-size:0.92rem; line-height:1.6; }
+  .icon-clock, .icon-cal{ width:14px; height:14px; flex-shrink:0; }
+
+  /* ================= MENU HEADER ================= */
+  .menu-header-flex{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; border-bottom:1px solid rgba(245,240,232,0.1); padding-bottom:44px; }
+  .menu-header-flex h2{ font-family:var(--serif); font-size:clamp(2.4rem,4.5vw,3.6rem); font-weight:700; }
+  .menu-header-sub{ color:var(--dim-white); margin-top:18px; max-width:420px; line-height:1.6; }
+  .menu-quote{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.25rem; max-width:360px; text-align:right; line-height:1.5; }
+  @media (max-width:768px){ .menu-quote{ text-align:left; } }
+
+  /* ================= MENU ITEMS — scroll linked rotation ================= */
+  .menu-item{
+    display:flex; align-items:center; justify-content:center; gap:6vw;
+    min-height:78vh; padding:60px 8vw; position:relative;
+  }
+  .menu-item.reverse{ flex-direction:row-reverse; }
+  .menu-img-circle{
+    width:420px; height:420px; border-radius:50%; overflow:hidden; flex-shrink:0;
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);
+    opacity:0;
+    will-change:transform, opacity;
+    transition:opacity 0.12s linear;
+  }
+  .menu-text{
+    max-width:460px; opacity:0; will-change:transform, opacity;
+    transition:opacity 0.12s linear;
+  }
+  .menu-text .eyebrow{ margin-bottom:10px; }
+  .menu-text h3{ font-family:var(--serif); font-size:clamp(2rem,3.6vw,3.1rem); font-weight:700; margin-bottom:20px; line-height:1.1; }
+  .menu-text p{ color:var(--dim-white); line-height:1.7; font-size:1rem; }
+
+  @media (max-width:820px){
+    .menu-item, .menu-item.reverse{ flex-direction:column; gap:40px; padding:50px 6vw; min-height:auto; }
+    .menu-img-circle{ width:260px; height:260px; }
+    .menu-text{ text-align:center; }
+  }
+
+  /* ================= INGREDIENTS ================= */
+  .ingredients{ text-align:center; background:var(--black-3); }
+  .ingredients h2{ font-family:var(--serif); font-size:clamp(2.4rem,4.6vw,3.8rem); font-weight:700; max-width:800px; margin:0 auto; }
+  .ingredients p{ color:var(--dim-white); max-width:680px; margin:26px auto 0; line-height:1.85; font-size:1.02rem; }
+  .ingredients-img{
+    margin-top:70px; border-radius:2px; overflow:hidden; height:460px;
+    opacity:0; transform:translateY(40px); transition:opacity 1s ease, transform 1s ease;
+  }
+  .ingredients-img.in{ opacity:1; transform:translateY(0); }
+
+  /* ================= REVIEWS ================= */
+  .reviews{ text-align:center; }
+  .reviews h2{ font-family:var(--serif); font-size:clamp(2.4rem,4.5vw,3.6rem); font-weight:700; }
+  .reviews-sub{ color:var(--dim-white); margin-top:16px; font-size:0.95rem; letter-spacing:0.02em; }
+  .review-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:50px; margin-top:80px; text-align:left; }
+  .review-card{ padding:0 20px; }
+  .quote-mark{ font-family:var(--serif); font-size:3.6rem; color:rgba(201,168,76,0.28); line-height:1; margin-bottom:10px; }
+  .review-text{ font-family:var(--serif); font-style:italic; color:var(--white); line-height:1.75; font-size:1.02rem; min-height:170px; }
+  .review-divider{ width:44px; height:1px; background:var(--gold); margin:28px 0 18px; opacity:0.6; }
+  .review-name{ font-family:var(--serif); color:var(--gold); font-size:1.15rem; font-weight:600; }
+  .review-meta{ color:rgba(245,240,232,0.42); font-size:0.78rem; margin:8px 0 14px; letter-spacing:0.02em; }
+  .review-stars{ color:var(--gold); font-size:0.9rem; letter-spacing:2px; }
+  @media (max-width:900px){ .review-grid{ grid-template-columns:1fr; gap:60px; } .review-text{ min-height:auto; } }
+
+  /* ================= CONTACT PARALLAX ================= */
+  .contact-hero{
+    position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden; background-color:#0d0b08;
+    background-size:cover; background-position:center; background-attachment:fixed;
+  }
+  .contact-hero::before{
+    content:''; position:absolute; inset:0; background:linear-gradient(rgba(5,4,3,0.55), rgba(5,4,3,0.72)); z-index:1;
+  }
+  @media (max-width:900px){ .contact-hero{ background-attachment:scroll; } }
+  .contact-hero-inner{ position:relative; z-index:2; }
+  .contact-hero h2{ font-family:var(--serif); font-size:clamp(2.6rem,6vw,5rem); font-weight:700; margin:12px 0 34px; }
+  .contact-hero .btn-outline{ padding:16px 34px; }
+
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start; }
+  .contact-block{ margin-bottom:38px; display:flex; gap:16px; align-items:flex-start; }
+  .contact-block svg{ color:var(--gold); flex-shrink:0; margin-top:4px; width:20px; height:20px; }
+  .contact-block h3{ font-family:var(--serif); font-size:1.4rem; margin-bottom:10px; }
+  .contact-block p{ color:var(--dim-white); line-height:1.7; margin-top:6px; }
+  .contact-buttons{ display:flex; gap:16px; flex-wrap:wrap; margin-top:6px; }
+  .btn-call{ border:1px solid var(--gold); color:var(--gold); padding:14px 22px; font-size:0.9rem; display:flex; align-items:center; gap:10px; }
+  .btn-whatsapp{ border:1px solid #3fbf60; color:#3fbf60; padding:14px 22px; font-size:0.9rem; display:flex; align-items:center; gap:10px; }
+
+  .enquiry-form{ margin-top:50px; }
+  .enquiry-form h3{ font-family:var(--serif); font-size:1.6rem; margin-bottom:30px; }
+  .form-group{ margin-bottom:34px; }
+  .form-group label{ display:block; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--dim-white); margin-bottom:12px; }
+  .form-group input, .form-group textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid rgba(245,240,232,0.25);
+    color:var(--white); font-family:var(--sans); font-size:1rem; padding:6px 2px 12px; transition:border-color 0.3s ease;
+  }
+  .form-group input:focus, .form-group textarea:focus{ border-color:var(--gold); outline:none; }
+  .btn-gold{
+    background:var(--gold); color:var(--black-1); border:none; padding:17px 40px;
+    font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; transition:opacity 0.3s ease;
+  }
+  .btn-gold:hover{ opacity:0.86; }
+
+  .map-wrap{ height:100%; min-height:420px; border:1px solid rgba(201,168,76,0.2); }
+  .map-wrap iframe{ width:100%; height:100%; min-height:420px; filter:grayscale(1) invert(0.92) contrast(0.9); border:0; }
+
+  @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* ================= FAQ ================= */
+  .faq-list{ max-width:900px; margin:70px auto 0; }
+  .faq-item{ border-bottom:1px solid rgba(201,168,76,0.18); }
+  .faq-q{
+    width:100%; background:none; border:none; color:var(--white); display:flex;
+    justify-content:space-between; align-items:center; padding:30px 4px; text-align:left;
+    font-family:var(--serif); font-size:1.2rem;
+  }
+  .faq-q .chev{ color:var(--gold); flex-shrink:0; margin-left:20px; transition:transform 0.35s ease; width:16px; height:16px; }
+  .faq-item.open .chev{ transform:rotate(180deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.4s ease; }
+  .faq-item.open .faq-a{ max-height:240px; padding-bottom:28px; }
+  .faq-a p{ color:var(--dim-white); line-height:1.75; max-width:760px; }
+  .faq-header{ text-align:center; }
+  .faq-header h2{ font-family:var(--serif); font-size:clamp(2.2rem,4vw,3.2rem); font-weight:700; }
+
+  /* ================= FOOTER ================= */
+  footer{ background:var(--black-3); border-top:1px solid rgba(201,168,76,0.12); padding:90px 8vw 40px; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:50px; }
+  .footer-label{ color:var(--gold); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:20px; display:block; }
+  .footer-grid p, .footer-grid a{ color:var(--dim-white); line-height:1.8; font-size:0.95rem; }
+  .footer-logo{ font-family:var(--serif); font-style:italic; font-size:2rem; color:var(--gold); margin-bottom:14px; display:block; }
+  .footer-tagline{ color:var(--dim-white); font-size:0.9rem; max-width:280px; line-height:1.7; }
+  .footer-socials{ display:flex; gap:24px; margin-top:22px; }
+  .footer-socials a{ font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; }
+  .footer-bottom{ margin-top:70px; padding-top:28px; border-top:1px solid rgba(245,240,232,0.08); text-align:center; color:rgba(245,240,232,0.35); font-size:0.82rem; }
+  @media (max-width:820px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .footer-grid{ grid-template-columns:1fr; } }
+
+  .scroll-progress{ position:fixed; top:0; left:0; height:2px; background:var(--gold); z-index:1100; width:0%; }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header id="siteHeader">
+  <div class="logo">Aura Cafe</div>
+  <nav class="main-nav" id="mainNav">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#menu">Menu</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <span class="nav-phone">093286 02636</span>
+    <a href="#contact" class="btn-outline">Reservations</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>A <em>Premium</em> And <em>Authentic</em><br><span class="bold-line">Café Experience</span></h1>
+      <p class="hero-sub">Slow mornings, honest ingredients, and a menu built for the community of Jagatpur — every cup and plate crafted with care.</p>
+      <a href="#contact" class="hero-cta">Book A Table</a>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">4.9/5 · 64 Reviews</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap animate-float-bob">
+        <div class="img-frame" data-label="Hero — Coffee Cup">
+          <img src="https://i.ibb.co/GSTsjmF/Screenshot-20260701-191057-Video-Player.jpg" alt="Latte art coffee cup with cinnamon sticks and coffee beans" onerror="this.parentElement.classList.add('img-missing')">
+        </div>
+      </div>
+      <span class="dot solid animate-float-scatter" style="width:10px;height:10px;top:10%;left:8%;"></span>
+      <span class="dot ring animate-float-scatter-2" style="width:22px;height:22px;top:78%;left:4%;"></span>
+      <span class="dot ring-gold animate-float-scatter" style="width:16px;height:16px;top:5%;right:6%;"></span>
+      <span class="dot solid animate-float-scatter-2" style="width:6px;height:6px;top:88%;right:10%;"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="split" id="about">
+  <div class="split-media reveal-left">
+    <div class="img-frame" data-label="About — Café Interior">
+      <img src="https://i.ibb.co/Jw7ttZg7/Screenshot-20260701-191121-Video-Player.jpg" alt="Aura Cafe warm interior seating" onerror="this.parentElement.classList.add('img-missing')">
+    </div>
+  </div>
+  <div class="split-card reveal-right">
+    <span class="eyebrow">Discover</span>
+    <h2>Our Story</h2>
+    <p>Aura Cafe and More was born out of a simple desire: to create a space where the community could slow down, connect, and enjoy genuinely good food. We're not a global chain, and we don't want to be. We are your local institution.</p>
+    <p>Whether you're a student looking for a quiet corner to study, a family sharing a Sunday morning brunch, or a couple on a casual date, you'll find a welcoming seat here. We believe in warm smiles, clean surroundings, and an unfussy approach to great dining.</p>
+    <p>From our fluffy pancakes to our rich, wood-fired style pizzas, every dish is crafted with care using quality ingredients. We want every visit to feel like coming home — but with much better coffee.</p>
+    <a href="#menu" class="split-link">More About Us →</a>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu" style="padding-top:120px;">
+  <div class="menu-header section-pad" style="padding-bottom:0;">
+    <div class="menu-header-flex reveal">
+      <div>
+        <span class="eyebrow">Discover</span>
+        <h2>Our Menu</h2>
+        <p class="menu-header-sub">A carefully curated selection of local favorites and signature dishes, crafted daily.</p>
+      </div>
+      <p class="menu-quote">"Great food is simple food made with exceptional ingredients."</p>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-img-circle">
+      <div class="img-frame" data-label="Fluffy Pancakes">
+        <img src="https://i.ibb.co/1YVdYyHX/Screenshot-20260701-191143-Video-Player.png" alt="Fluffy pancakes with syrup on white plate" onerror="this.parentElement.classList.add('img-missing')">
+      </div>
+    </div>
+    <div class="menu-text">
+      <span class="eyebrow">Morning Delights</span>
+      <h3>Fluffy Pancakes</h3>
+      <p>Fluffy stacks with rich butter and maple syrup, made to perfection every morning.</p>
+    </div>
+  </div>
+
+  <div class="menu-item reverse">
+    <div class="menu-img-circle">
+      <div class="img-frame" data-label="Wood-Fired Pizza">
+        <img src="https://i.ibb.co/r2DX0rqJ/Screenshot-20260701-191157-Video-Player.png" alt="Wood fired margherita pizza with basil" onerror="this.parentElement.classList.add('img-missing')">
+      </div>
+    </div>
+    <div class="menu-text">
+      <span class="eyebrow">Signature Bakes</span>
+      <h3>Wood-Fired Pizza</h3>
+      <p>Wood-fired style crust with fresh basil, melting cheese, and a crispy, golden base.</p>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-img-circle">
+      <div class="img-frame" data-label="Creamy Pasta">
+        <img src="https://i.ibb.co/BKFSJc28/Screenshot-20260701-191208-Video-Player.png" alt="Creamy pasta with basil garnish" onerror="this.parentElement.classList.add('img-missing')">
+      </div>
+    </div>
+    <div class="menu-text">
+      <span class="eyebrow">Pasta &amp; More</span>
+      <h3>Creamy Pasta</h3>
+      <p>Rich, creamy sauce with perfectly cooked pasta, garnished with fresh herbs and parmesan.</p>
+    </div>
+  </div>
+
+  <div class="menu-item reverse">
+    <div class="menu-img-circle">
+      <div class="img-frame" data-label="Rich Brownies">
+        <img src="https://i.ibb.co/hFWzNHVB/Screenshot-20260701-191216-Video-Player.png" alt="Rich chocolate brownie dusted with sugar" onerror="this.parentElement.classList.add('img-missing')">
+      </div>
+    </div>
+    <div class="menu-text">
+      <span class="eyebrow">Sweet Indulgence</span>
+      <h3>Rich Brownies</h3>
+      <p>Fudgy, chocolatey brownies dusted with powdered sugar — an irresistible treat.</p>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-img-circle">
+      <div class="img-frame" data-label="Classic Cheesecake">
+        <img src="https://i.ibb.co/TMxZgf52/Screenshot-20260701-191404-Video-Player.png" alt="Cheesecake slice with berry compote" onerror="this.parentElement.classList.add('img-missing')">
+      </div>
+    </div>
+    <div class="menu-text">
+      <span class="eyebrow">Classic Desserts</span>
+      <h3>Classic Cheesecake</h3>
+      <p>An elegant classic cheesecake slice served with a seasonal berry compote.</p>
+    </div>
+  </div>
+
+  <div class="menu-item reverse">
+    <div class="menu-img-circle">
+      <div class="img-frame" data-label="Artisan Coffee">
+        <img src="https://i.ibb.co/wNJz9Jc9/Screenshot-20260701-191412-Video-Player.png" alt="Latte art coffee cup with beans" onerror="this.parentElement.classList.add('img-missing')">
+      </div>
+    </div>
+    <div class="menu-text">
+      <span class="eyebrow">Artisan Coffee</span>
+      <h3>Artisan Coffee</h3>
+      <p>Expertly pulled espresso with beautiful latte art — the heart of everything we do.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENTS ================= -->
+<section class="split mirrored" id="events">
+  <div class="split-media reveal-right">
+    <div class="img-frame" data-label="Events — Barista at Work">
+      <img src="https://i.ibb.co/zVF9BT9j/Screenshot-20260701-191538-Video-Player.jpg" alt="Barista preparing coffee at Aura Cafe" onerror="this.parentElement.classList.add('img-missing')">
+    </div>
+  </div>
+  <div class="split-card reveal-left">
+    <span class="eyebrow">Discover</span>
+    <h2>Current Events</h2>
+    <p>Join us for our latest happenings at Aura Cafe. From special brunches to coffee tasting sessions — there's always something to look forward to.</p>
+
+    <div class="events-list">
+      <div class="event-item">
+        <div class="event-top">
+          <span class="event-name">Weekend Brunch Special</span>
+          <span class="event-date">Every Sat &amp; Sun</span>
+        </div>
+        <div class="event-time">
+          <svg class="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          9:00 AM – 12:00 PM
+        </div>
+        <p class="event-detail">Bottomless coffee with every brunch order. Limited seats available.</p>
+      </div>
+      <div class="event-item">
+        <div class="event-top">
+          <span class="event-name">Coffee Tasting Evening</span>
+          <span class="event-date">July 12, 2026</span>
+        </div>
+        <div class="event-time">
+          <svg class="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          6:00 PM – 9:00 PM
+        </div>
+        <p class="event-detail">Explore single-origin beans guided by our in-house barista.</p>
+      </div>
+      <div class="event-item">
+        <div class="event-top">
+          <span class="event-name">Family Sundays</span>
+          <span class="event-date">Every Sunday</span>
+        </div>
+        <div class="event-time">
+          <svg class="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          All Day
+        </div>
+        <p class="event-detail">Kids eat free with every adult main course. Book a table in advance.</p>
+      </div>
+    </div>
+
+    <a href="#contact" class="split-link">
+      <svg class="icon-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+      Enquire or Reserve →
+    </a>
+  </div>
+</section>
+
+<!-- ================= INGREDIENTS ================= -->
+<section class="ingredients section-pad">
+  <span class="eyebrow reveal">Discover</span>
+  <h2 class="reveal">The Finest Ingredients</h2>
+  <p class="reveal">We take an enormous amount of pride in sourcing our ingredients carefully to ensure that the flavors of our coffee are as delicious and authentic as possible. Every cup is crafted with an extra level of care that is difficult to find at other cafés.</p>
+  <div class="ingredients-img">
+    <div class="img-frame" data-label="Coffee &amp; Ingredients Flat-lay" style="height:100%;">
+      <img src="https://i.ibb.co/ymK3zvB0/Screenshot-20260702-215723-Video-Player.jpg" alt="Coffee flat lay with cinnamon, beans, star anise and leaves" onerror="this.parentElement.classList.add('img-missing')">
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews section-pad">
+  <span class="eyebrow reveal">Testimonials</span>
+  <h2 class="reveal">What Our Guests Say</h2>
+  <p class="reviews-sub reveal">Real reviews from Google Maps · 4.9 / 5</p>
+
+  <div class="review-grid">
+    <div class="review-card reveal">
+      <div class="quote-mark">"</div>
+      <p class="review-text">I visited Aura Cafe yesterday and absolutely loved the atmosphere. The ambience is very calm, cozy, and perfect for relaxing or spending quality time with friends. The food was delicious and well presented, and the quality really stood out. What impressed me the most was the staff — very polite, friendly, and attentive. Definitely a great place to visit if you're looking for good food, a peaceful vibe, and excellent service. Highly recommended!</p>
+      <div class="review-divider"></div>
+      <div class="review-name">Mit Patel</div>
+      <div class="review-meta">Local Guide · 3 months ago</div>
+      <div class="review-stars">★★★★★</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="quote-mark">"</div>
+      <p class="review-text">Loved their new menu. The dough, the sauces for the pizza — everything is made in-house which tastes amazing! And even the other food from the menu is made freshly rather than those packaged foods, which is a dealmaker! Definitely worth visiting.</p>
+      <div class="review-divider"></div>
+      <div class="review-name">Aakash Jangid</div>
+      <div class="review-meta">Dine in · Lunch · ₹200–400 · 7 months ago</div>
+      <div class="review-stars">★★★★★</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="quote-mark">"</div>
+      <p class="review-text">The ambiance is of first ray of light. One can spend quality time with your partner at a reasonable price with no compromise on quality. One must try pizza &amp; pasta. Cold coffee is a must. Food: 5/5 · Service: 5/5 · Atmosphere: 5/5</p>
+      <div class="review-divider"></div>
+      <div class="review-name">Hitesh Jani</div>
+      <div class="review-meta">Dinner · ₹600–800 · 5 months ago</div>
+      <div class="review-stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact-hero" class="contact-hero" style="background-image:url('https://i.ibb.co/ycQ5VG5W/Screenshot-20260701-191601-Video-Player.jpg');">
+  <div class="contact-hero-inner reveal">
+    <span class="eyebrow">Reservation</span>
+    <h2>Book Your Visit</h2>
+    <a href="#contact" class="btn-outline">Online Booking →</a>
+  </div>
+</section>
+
+<section class="section-pad" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-block reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div>
+          <h3>Location</h3>
+          <p>Shop no 11, Godrej Vannangan, opposite Global Indian International School, Jagatpur, Ahmedabad 382470</p>
+        </div>
+      </div>
+      <div class="contact-block reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div>
+          <h3>Hours</h3>
+          <p>Mon – Sun: 9:00 AM – 10:00 PM</p>
+        </div>
+      </div>
+      <div class="contact-block reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.99.36 1.96.68 2.89a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.19-1.19a2 2 0 0 1 2.11-.45c.93.32 1.9.55 2.89.68A2 2 0 0 1 22 16.92z"/></svg>
+        <div>
+          <h3>Contact</h3>
+          <div class="contact-buttons">
+            <a href="tel:09328602636" class="btn-call">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.99.36 1.96.68 2.89a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.19-1.19a2 2 0 0 1 2.11-.45c.93.32 1.9.55 2.89.68A2 2 0 0 1 22 16.92z"/></svg>
+              093286 02636
+            </a>
+            <a href="https://wa.me/919328602636" target="_blank" rel="noopener" class="btn-whatsapp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.55a9.9 9.9 0 0 0 4.91 1.28h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.38 1.3-1.9 1.36-.5.06-1.06.28-3.54-.74-3-1.23-4.92-4.26-5.07-4.46-.15-.2-1.22-1.62-1.22-3.1 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.62.86 2.13.94 2.29.08.15.13.33.02.53-.1.2-.16.32-.31.5-.16.18-.32.4-.46.53-.15.15-.31.31-.14.61.18.3.79 1.31 1.7 2.13 1.17 1.05 2.16 1.37 2.46 1.53.3.15.48.13.66-.07.18-.2.77-.9.98-1.2.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.72-.17 1.4z"/></svg>
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <form class="enquiry-form reveal" id="enquiryForm">
+        <h3>Send an Enquiry</h3>
+        <div class="form-group">
+          <label for="fname">Name *</label>
+          <input type="text" id="fname" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone *</label>
+          <input type="tel" id="fphone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="fmsg">Message (optional)</label>
+          <textarea id="fmsg" name="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-gold">Send Message</button>
+      </form>
+    </div>
+
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps?q=Aura+Cafe+and+More,+Godrej+Garden+City,+Jagatpur,+Ahmedabad,+Gujarat+382470&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Aura Cafe and More location on Google Maps">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section-pad" id="faq">
+  <div class="faq-header reveal">
+    <span class="eyebrow">Questions</span>
+    <h2>Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">
+        Do I need a reservation, or can I walk in?
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a"><p>Walk-ins are always welcome, but we recommend a reservation for weekends and evenings when tables fill up quickly. Call or WhatsApp us at 093286 02636 to book ahead.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Is your entire menu vegetarian?
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a"><p>Yes — every dish on our menu, from breakfast to dessert, is 100% vegetarian, made fresh in-house daily.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        What's the average price for two people?
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a"><p>Most guests spend between ₹200–400 per person, depending on what you order — making it easy to enjoy a full meal without stretching your budget.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Do you host private events or birthday parties?
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a"><p>We do! Reach out via phone or WhatsApp with your preferred date and group size, and our team will help you plan a memorable gathering.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">Aura Cafe</span>
+      <p class="footer-tagline">A premium and authentic café experience — every cup and plate crafted with care, right in the heart of Jagatpur.</p>
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <span class="footer-label">Location</span>
+      <p>Shop no 11, Godrej Vannangan, opposite Global Indian International School, Jagatpur, Ahmedabad 382470</p>
+    </div>
+    <div>
+      <span class="footer-label">Contact</span>
+      <p>093286 02636</p>
+      <p>info@auracafe.in</p>
+    </div>
+    <div>
+      <span class="footer-label">Working Hours</span>
+      <p>Mon–Sun<br>9:00 AM – 10:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Aura Cafe and More. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // ---------- navbar scroll state ----------
+  const header = document.getElementById('siteHeader');
+  const progress = document.getElementById('scrollProgress');
+  function onScroll(){
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 40);
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (docH > 0 ? (y / docH) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // ---------- mobile nav toggle ----------
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
+
+  // ---------- active nav link on scroll ----------
+  const sections = ['home','about','menu','events','contact'].map(id => document.getElementById(id)).filter(Boolean);
+  const navLinks = document.querySelectorAll('.main-nav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        navLinks.forEach(l => l.classList.remove('active'));
+        const match = document.querySelector('.main-nav a[href="#' + entry.target.id + '"]');
+        if(match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // ---------- generic reveal on scroll (headings/cards/panels) ----------
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ---------- ingredients image fade-in ----------
+  const ingImg = document.querySelector('.ingredients-img');
+  if(ingImg){
+    const ingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); ingObserver.unobserve(entry.target); } });
+    }, { threshold:0.2 });
+    ingObserver.observe(ingImg);
+  }
+
+  // ---------- MENU: true scroll-linked float / rotate / fade ----------
+  // Mirrors the PRD's useScroll + useTransform + useSpring behaviour using rAF-driven inline transforms.
+  const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+  let ticking = false;
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function updateMenuScroll(){
+    const vh = window.innerHeight;
+    menuItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      // raw progress: 0 when item's top just enters viewport bottom, 1 when item's bottom exits viewport top
+      const total = vh + rect.height;
+      const raw = (vh - rect.top) / total;
+      const phase = Math.min(Math.max(raw, 0), 1);
+
+      // opacity: rises 0->1 over first 35%, holds, fades 1->0 over last 35%
+      let opacity;
+      if(phase < 0.32){ opacity = easeOutCubic(phase / 0.32); }
+      else if(phase > 0.68){ opacity = easeOutCubic((1 - phase) / 0.32); }
+      else { opacity = 1; }
+
+      const rotate = (phase - 0.5) * 34;          // gentle continuous rotation, -17deg -> +17deg
+      const floatY = (1 - opacity) * 70;            // floats up from below on entry, drifts up further on exit
+      const scale = 0.86 + 0.14 * opacity;
+
+      const img = item.querySelector('.menu-img-circle');
+      const txt = item.querySelector('.menu-text');
+      if(img){
+        img.style.opacity = opacity;
+        img.style.transform = `translateY(${floatY}px) rotate(${rotate}deg) scale(${scale})`;
+      }
+      if(txt){
+        txt.style.opacity = opacity;
+        txt.style.transform = `translateY(${floatY * 0.55}px)`;
+      }
+    });
+    ticking = false;
+  }
+
+  function requestMenuUpdate(){
+    if(!ticking){
+      requestAnimationFrame(updateMenuScroll);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestMenuUpdate, { passive:true });
+  window.addEventListener('resize', requestMenuUpdate);
+  updateMenuScroll();
+
+  // ---------- FAQ accordion ----------
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ---------- contact form (no backend — demo only) ----------
+  document.getElementById('enquiryForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('.btn-gold');
+    const original = btn.textContent;
+    btn.textContent = 'Message Sent ✓';
+    this.reset();
+    setTimeout(() => { btn.textContent = original; }, 2400);
+  });
+
+  // ---------- smooth anchor scroll offset for fixed header ----------
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      const id = this.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top, behavior:'smooth' });
+      }
+    });
+  });
+
+  // ---------- contact hero background loader (with fallback) ----------
+  (function(){
+    const el = document.getElementById('contact-hero');
+    const testImg = new Image();
+    testImg.onerror = function(){
+      el.style.backgroundImage = 'none';
+      el.style.background = 'radial-gradient(circle at 50% 30%, #1c1712, #050403)';
+    };
+    testImg.src = 'https://i.ibb.co/ycQ5VG5W/Screenshot-20260701-191601-Video-Player.jpg';
+  })();
+</script>
+
+</body>
+</html>
