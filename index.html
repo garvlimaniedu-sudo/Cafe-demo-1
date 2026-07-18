@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aura Cafe and More | Premium Vegetarian Café, Ahmedabad</title>
+<title>Fresh Bite | Delight In Every Bite, Ahmedabad</title>
+<meta name="description" content="Fresh Bite — Delight In Every Bite. A premium café experience in Ahmedabad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black-1:#0a0905;
-    --black-2:#080705;
-    --black-3:#050403;
-    --gold:#C9A84C;
-    --cream:#F5F0E8;
-    --cream-text:#1a1610;
+    --black-1:#0A0E16;
+    --black-2:#070A10;
+    --black-3:#04060A;
+    --gold:#489863;
+    --cream:#F2F6F3;
+    --cream-text:#16233A;
     --white:#ffffff;
     --dim-white:rgba(245,240,232,0.62);
     --serif:'Playfair Display', serif;
@@ -41,8 +42,8 @@
   :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
   /* ---------- graceful image fallback ---------- */
-  .img-frame{ position:relative; width:100%; height:100%; overflow:hidden; background:#0d0b08; }
-  .img-frame.img-missing{ display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 40%, #1c1712, #050403); }
+  .img-frame{ position:relative; width:100%; height:100%; overflow:hidden; background:#0B0F18; }
+  .img-frame.img-missing{ display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 40%, #1A2233, #04060A); }
   .img-frame.img-missing img{ display:none; }
   .img-frame.img-missing::after{
     content:attr(data-label);
@@ -143,7 +144,7 @@
   /* ================= HERO ================= */
   .hero{
     min-height:100vh; display:flex; align-items:center; padding:0 5vw; position:relative;
-    background:radial-gradient(ellipse at 75% 40%, #120f0a 0%, var(--black-1) 60%);
+    background:radial-gradient(ellipse at 75% 40%, #0D1220 0%, var(--black-1) 60%);
     overflow:hidden;
   }
   .hero-inner{ display:flex; align-items:center; width:100%; gap:40px; padding-top:80px; }
@@ -182,12 +183,12 @@
   }
   .split.mirrored{ flex-direction:row-reverse; }
   .split.mirrored .split-card{ box-shadow:40px 0 80px rgba(0,0,0,0.45); }
-  .split-card .eyebrow{ color:#a5843a; }
+  .split-card .eyebrow{ color:#2F6142; }
   .split-card h2{ font-family:var(--serif); font-size:clamp(2.1rem,3.4vw,3rem); font-weight:700; margin-bottom:28px; color:var(--cream-text); }
-  .split-card p{ color:#4a4438; line-height:1.85; margin-bottom:20px; font-size:1rem; }
+  .split-card p{ color:#4E5A70; line-height:1.85; margin-bottom:20px; font-size:1rem; }
   .split-link{
-    margin-top:12px; color:#a5843a; font-weight:600; font-size:0.9rem; letter-spacing:0.03em;
-    display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid #a5843a; padding-bottom:3px; width:fit-content;
+    margin-top:12px; color:#2F6142; font-weight:600; font-size:0.9rem; letter-spacing:0.03em;
+    display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid #2F6142; padding-bottom:3px; width:fit-content;
   }
 
   @media (max-width:900px){
@@ -203,8 +204,8 @@
   .event-top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
   .event-name{ font-family:var(--serif); font-weight:700; font-size:1.15rem; }
   .event-date{ color:var(--gold); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
-  .event-time{ display:flex; align-items:center; gap:8px; color:#7a7263; font-size:0.85rem; margin:8px 0 6px; }
-  .event-detail{ color:#4a4438; font-size:0.92rem; line-height:1.6; }
+  .event-time{ display:flex; align-items:center; gap:8px; color:#5A6678; font-size:0.85rem; margin:8px 0 6px; }
+  .event-detail{ color:#4E5A70; font-size:0.92rem; line-height:1.6; }
   .icon-clock, .icon-cal{ width:14px; height:14px; flex-shrink:0; }
 
   /* ================= MENU HEADER ================= */
@@ -268,7 +269,7 @@
   /* ================= CONTACT PARALLAX ================= */
   .contact-hero{
     position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center;
-    text-align:center; overflow:hidden; background-color:#0d0b08;
+    text-align:center; overflow:hidden; background-color:#0B0F18;
     background-size:cover; background-position:center; background-attachment:fixed;
   }
   .contact-hero::before{
@@ -346,7 +347,7 @@
 
 <!-- ================= NAVBAR ================= -->
 <header id="siteHeader">
-  <div class="logo">Aura Cafe</div>
+  <div class="logo">Fresh Bite</div>
   <nav class="main-nav" id="mainNav">
     <a href="#home" class="active">Home</a>
     <a href="#about">About Us</a>
@@ -393,13 +394,13 @@
 <section class="split" id="about">
   <div class="split-media reveal-left">
     <div class="img-frame" data-label="About — Café Interior">
-      <img src="https://i.ibb.co/Jw7ttZg7/Screenshot-20260701-191121-Video-Player.jpg" alt="Aura Cafe warm interior seating" onerror="this.parentElement.classList.add('img-missing')">
+      <img src="https://i.ibb.co/Jw7ttZg7/Screenshot-20260701-191121-Video-Player.jpg" alt="Fresh Bite warm interior seating" onerror="this.parentElement.classList.add('img-missing')">
     </div>
   </div>
   <div class="split-card reveal-right">
     <span class="eyebrow">Discover</span>
     <h2>Our Story</h2>
-    <p>Aura Cafe and More was born out of a simple desire: to create a space where the community could slow down, connect, and enjoy genuinely good food. We're not a global chain, and we don't want to be. We are your local institution.</p>
+    <p>Fresh Bite was born out of a simple desire: to create a space where the community could slow down, connect, and enjoy genuinely good food. We're not a global chain, and we don't want to be. We are your local institution.</p>
     <p>Whether you're a student looking for a quiet corner to study, a family sharing a Sunday morning brunch, or a couple on a casual date, you'll find a welcoming seat here. We believe in warm smiles, clean surroundings, and an unfussy approach to great dining.</p>
     <p>From our fluffy pancakes to our rich, wood-fired style pizzas, every dish is crafted with care using quality ingredients. We want every visit to feel like coming home — but with much better coffee.</p>
     <a href="#menu" class="split-link">More About Us →</a>
@@ -502,13 +503,13 @@
 <section class="split mirrored" id="events">
   <div class="split-media reveal-right">
     <div class="img-frame" data-label="Events — Barista at Work">
-      <img src="https://i.ibb.co/zVF9BT9j/Screenshot-20260701-191538-Video-Player.jpg" alt="Barista preparing coffee at Aura Cafe" onerror="this.parentElement.classList.add('img-missing')">
+      <img src="https://i.ibb.co/zVF9BT9j/Screenshot-20260701-191538-Video-Player.jpg" alt="Barista preparing coffee at Fresh Bite" onerror="this.parentElement.classList.add('img-missing')">
     </div>
   </div>
   <div class="split-card reveal-left">
     <span class="eyebrow">Discover</span>
     <h2>Current Events</h2>
-    <p>Join us for our latest happenings at Aura Cafe. From special brunches to coffee tasting sessions — there's always something to look forward to.</p>
+    <p>Join us for our latest happenings at Fresh Bite. From special brunches to coffee tasting sessions — there's always something to look forward to.</p>
 
     <div class="events-list">
       <div class="event-item">
@@ -574,7 +575,7 @@
   <div class="review-grid">
     <div class="review-card reveal">
       <div class="quote-mark">"</div>
-      <p class="review-text">I visited Aura Cafe yesterday and absolutely loved the atmosphere. The ambience is very calm, cozy, and perfect for relaxing or spending quality time with friends. The food was delicious and well presented, and the quality really stood out. What impressed me the most was the staff — very polite, friendly, and attentive. Definitely a great place to visit if you're looking for good food, a peaceful vibe, and excellent service. Highly recommended!</p>
+      <p class="review-text">I visited Fresh Bite yesterday and absolutely loved the atmosphere. The ambience is very calm, cozy, and perfect for relaxing or spending quality time with friends. The food was delicious and well presented, and the quality really stood out. What impressed me the most was the staff — very polite, friendly, and attentive. Definitely a great place to visit if you're looking for good food, a peaceful vibe, and excellent service. Highly recommended!</p>
       <div class="review-divider"></div>
       <div class="review-name">Mit Patel</div>
       <div class="review-meta">Local Guide · 3 months ago</div>
@@ -662,10 +663,10 @@
 
     <div class="map-wrap reveal">
       <iframe
-        src="https://www.google.com/maps?q=Aura+Cafe+and+More,+Godrej+Garden+City,+Jagatpur,+Ahmedabad,+Gujarat+382470&output=embed"
+        src="https://www.google.com/maps?q=Ahmedabad,+Gujarat,+India"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Aura Cafe and More location on Google Maps">
+        title="Fresh Bite location on Google Maps">
       </iframe>
     </div>
   </div>
@@ -687,10 +688,10 @@
     </div>
     <div class="faq-item">
       <button class="faq-q">
-        Is your entire menu vegetarian?
+        Do you take walk-ins, or only reservations?
         <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="faq-a"><p>Yes — every dish on our menu, from breakfast to dessert, is 100% vegetarian, made fresh in-house daily.</p></div>
+      <div class="faq-a"><p>We happily welcome walk-ins any time — though booking ahead is a good idea on weekends and evenings.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q">
@@ -713,7 +714,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <span class="footer-logo">Aura Cafe</span>
+      <span class="footer-logo">Fresh Bite</span>
       <p class="footer-tagline">A premium and authentic café experience — every cup and plate crafted with care, right in the heart of Jagatpur.</p>
       <div class="footer-socials">
         <a href="#">Instagram</a>
@@ -735,7 +736,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Aura Cafe and More. All rights reserved.
+    © 2026 Fresh Bite. All rights reserved.
   </div>
 </footer>
 
@@ -882,7 +883,7 @@
     const testImg = new Image();
     testImg.onerror = function(){
       el.style.backgroundImage = 'none';
-      el.style.background = 'radial-gradient(circle at 50% 30%, #1c1712, #050403)';
+      el.style.background = 'radial-gradient(circle at 50% 30%, #1A2233, #04060A)';
     };
     testImg.src = 'https://i.ibb.co/ycQ5VG5W/Screenshot-20260701-191601-Video-Player.jpg';
   })();
