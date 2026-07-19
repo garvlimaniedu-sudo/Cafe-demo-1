@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black-1:#0A0E16;
-    --black-2:#070A10;
-    --black-3:#04060A;
-    --gold:#489863;
-    --cream:#F2F6F3;
-    --cream-text:#16233A;
+    --black-1:#0A0905;
+    --black-2:#080705;
+    --black-3:#050403;
+    --gold:#C9A84C;
+    --cream:#F5F0E8;
+    --cream-text:#1A1610;
     --white:#ffffff;
-    --dim-white:rgba(242,246,243,0.62);
+    --dim-white:rgba(245,240,232,0.62);
     --serif:'Playfair Display', serif;
     --sans:'Inter', sans-serif;
   }
@@ -42,8 +42,8 @@
   :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
   /* ---------- graceful image fallback ---------- */
-  .img-frame{ position:relative; width:100%; height:100%; overflow:hidden; background:#0B0F18; }
-  .img-frame.img-missing{ display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 40%, #1A2233, #04060A); }
+  .img-frame{ position:relative; width:100%; height:100%; overflow:hidden; background:#0D0B08; }
+  .img-frame.img-missing{ display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 40%, #1C1712, #050403); }
   .img-frame.img-missing img{ display:none; }
   .img-frame.img-missing::after{
     content:attr(data-label);
@@ -100,8 +100,8 @@
     transition:background 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
   }
   header.scrolled{
-    background:rgba(7,10,16,0.92); backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(72,152,99,0.15); padding:16px 5vw;
+    background:rgba(8,7,5,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 5vw;
   }
   .logo{ font-family:var(--serif); font-style:italic; font-size:1.7rem; color:var(--gold); }
   nav.main-nav{ display:flex; gap:38px; }
@@ -134,7 +134,7 @@
       position:fixed; top:0; right:0; height:100vh; width:78vw; max-width:340px;
       background:var(--black-2); flex-direction:column; justify-content:center; align-items:flex-start;
       padding:0 40px; gap:30px; transform:translateX(100%); transition:transform 0.4s ease;
-      border-left:1px solid rgba(72,152,99,0.15);
+      border-left:1px solid rgba(201,168,76,0.15);
     }
     nav.main-nav.open{ transform:translateX(0); }
     .nav-phone{ display:none; }
@@ -144,7 +144,7 @@
   /* ================= HERO ================= */
   .hero{
     min-height:100vh; display:flex; align-items:center; padding:0 5vw; position:relative;
-    background:radial-gradient(ellipse at 75% 40%, #0D1220 0%, var(--black-1) 60%);
+    background:radial-gradient(ellipse at 75% 40%, #120F0A 0%, var(--black-1) 60%);
     overflow:hidden;
   }
   .hero-inner{ display:flex; align-items:center; width:100%; gap:40px; padding-top:80px; }
@@ -183,12 +183,12 @@
   }
   .split.mirrored{ flex-direction:row-reverse; }
   .split.mirrored .split-card{ box-shadow:40px 0 80px rgba(0,0,0,0.45); }
-  .split-card .eyebrow{ color:#2F6142; }
+  .split-card .eyebrow{ color:#A5843A; }
   .split-card h2{ font-family:var(--serif); font-size:clamp(2.1rem,3.4vw,3rem); font-weight:700; margin-bottom:28px; color:var(--cream-text); }
-  .split-card p{ color:#4E5A70; line-height:1.85; margin-bottom:20px; font-size:1rem; }
+  .split-card p{ color:#4A4438; line-height:1.85; margin-bottom:20px; font-size:1rem; }
   .split-link{
-    margin-top:12px; color:#2F6142; font-weight:600; font-size:0.9rem; letter-spacing:0.03em;
-    display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid #2F6142; padding-bottom:3px; width:fit-content;
+    margin-top:12px; color:#A5843A; font-weight:600; font-size:0.9rem; letter-spacing:0.03em;
+    display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid #A5843A; padding-bottom:3px; width:fit-content;
   }
 
   @media (max-width:900px){
@@ -199,17 +199,17 @@
   }
 
   .events-list{ margin:8px 0 30px; }
-  .event-item{ padding:22px 0; border-bottom:1px solid rgba(22,35,58,0.12); }
+  .event-item{ padding:22px 0; border-bottom:1px solid rgba(26,22,16,0.12); }
   .event-item:first-child{ padding-top:0; }
   .event-top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
   .event-name{ font-family:var(--serif); font-weight:700; font-size:1.15rem; }
   .event-date{ color:var(--gold); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
-  .event-time{ display:flex; align-items:center; gap:8px; color:#5A6678; font-size:0.85rem; margin:8px 0 6px; }
-  .event-detail{ color:#4E5A70; font-size:0.92rem; line-height:1.6; }
+  .event-time{ display:flex; align-items:center; gap:8px; color:#7A7263; font-size:0.85rem; margin:8px 0 6px; }
+  .event-detail{ color:#4A4438; font-size:0.92rem; line-height:1.6; }
   .icon-clock, .icon-cal{ width:14px; height:14px; flex-shrink:0; }
 
   /* ================= MENU HEADER ================= */
-  .menu-header-flex{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; border-bottom:1px solid rgba(242,246,243,0.1); padding-bottom:44px; }
+  .menu-header-flex{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; border-bottom:1px solid rgba(245,240,232,0.1); padding-bottom:44px; }
   .menu-header-flex h2{ font-family:var(--serif); font-size:clamp(2.4rem,4.5vw,3.6rem); font-weight:700; }
   .menu-header-sub{ color:var(--dim-white); margin-top:18px; max-width:420px; line-height:1.6; }
   .menu-quote{ font-family:var(--serif); font-style:italic; color:var(--gold); font-size:1.25rem; max-width:360px; text-align:right; line-height:1.5; }
@@ -258,22 +258,22 @@
   .reviews-sub{ color:var(--dim-white); margin-top:16px; font-size:0.95rem; letter-spacing:0.02em; }
   .review-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:50px; margin-top:80px; text-align:left; }
   .review-card{ padding:0 20px; }
-  .quote-mark{ font-family:var(--serif); font-size:3.6rem; color:rgba(72,152,99,0.28); line-height:1; margin-bottom:10px; }
+  .quote-mark{ font-family:var(--serif); font-size:3.6rem; color:rgba(201,168,76,0.28); line-height:1; margin-bottom:10px; }
   .review-text{ font-family:var(--serif); font-style:italic; color:var(--white); line-height:1.75; font-size:1.02rem; min-height:170px; }
   .review-divider{ width:44px; height:1px; background:var(--gold); margin:28px 0 18px; opacity:0.6; }
   .review-name{ font-family:var(--serif); color:var(--gold); font-size:1.15rem; font-weight:600; }
-  .review-meta{ color:rgba(242,246,243,0.42); font-size:0.78rem; margin:8px 0 14px; letter-spacing:0.02em; }
+  .review-meta{ color:rgba(245,240,232,0.42); font-size:0.78rem; margin:8px 0 14px; letter-spacing:0.02em; }
   .review-stars{ color:var(--gold); font-size:0.9rem; letter-spacing:2px; }
   @media (max-width:900px){ .review-grid{ grid-template-columns:1fr; gap:60px; } .review-text{ min-height:auto; } }
 
   /* ================= CONTACT PARALLAX ================= */
   .contact-hero{
     position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center;
-    text-align:center; overflow:hidden; background-color:#0B0F18;
+    text-align:center; overflow:hidden; background-color:#0D0B08;
     background-size:cover; background-position:center; background-attachment:fixed;
   }
   .contact-hero::before{
-    content:''; position:absolute; inset:0; background:linear-gradient(rgba(4,6,10,0.55), rgba(4,6,10,0.72)); z-index:1;
+    content:''; position:absolute; inset:0; background:linear-gradient(rgba(5,4,3,0.55), rgba(5,4,3,0.72)); z-index:1;
   }
   @media (max-width:900px){ .contact-hero{ background-attachment:scroll; } }
   .contact-hero-inner{ position:relative; z-index:2; }
@@ -294,7 +294,7 @@
   .form-group{ margin-bottom:34px; }
   .form-group label{ display:block; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--dim-white); margin-bottom:12px; }
   .form-group input, .form-group textarea{
-    width:100%; background:transparent; border:none; border-bottom:1px solid rgba(242,246,243,0.25);
+    width:100%; background:transparent; border:none; border-bottom:1px solid rgba(245,240,232,0.25);
     color:var(--white); font-family:var(--sans); font-size:1rem; padding:6px 2px 12px; transition:border-color 0.3s ease;
   }
   .form-group input:focus, .form-group textarea:focus{ border-color:var(--gold); outline:none; }
@@ -304,14 +304,14 @@
   }
   .btn-gold:hover{ opacity:0.86; }
 
-  .map-wrap{ height:100%; min-height:420px; border:1px solid rgba(72,152,99,0.2); }
+  .map-wrap{ height:100%; min-height:420px; border:1px solid rgba(201,168,76,0.2); }
   .map-wrap iframe{ width:100%; height:100%; min-height:420px; filter:grayscale(1) invert(0.92) contrast(0.9); border:0; }
 
   @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
 
   /* ================= FAQ ================= */
   .faq-list{ max-width:900px; margin:70px auto 0; }
-  .faq-item{ border-bottom:1px solid rgba(72,152,99,0.18); }
+  .faq-item{ border-bottom:1px solid rgba(201,168,76,0.18); }
   .faq-q{
     width:100%; background:none; border:none; color:var(--white); display:flex;
     justify-content:space-between; align-items:center; padding:30px 4px; text-align:left;
@@ -326,7 +326,7 @@
   .faq-header h2{ font-family:var(--serif); font-size:clamp(2.2rem,4vw,3.2rem); font-weight:700; }
 
   /* ================= FOOTER ================= */
-  footer{ background:var(--black-3); border-top:1px solid rgba(72,152,99,0.12); padding:90px 8vw 40px; }
+  footer{ background:var(--black-3); border-top:1px solid rgba(201,168,76,0.12); padding:90px 8vw 40px; }
   .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:50px; }
   .footer-label{ color:var(--gold); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:20px; display:block; }
   .footer-grid p, .footer-grid a{ color:var(--dim-white); line-height:1.8; font-size:0.95rem; }
@@ -334,7 +334,7 @@
   .footer-tagline{ color:var(--dim-white); font-size:0.9rem; max-width:280px; line-height:1.7; }
   .footer-socials{ display:flex; gap:24px; margin-top:22px; }
   .footer-socials a{ font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; }
-  .footer-bottom{ margin-top:70px; padding-top:28px; border-top:1px solid rgba(242,246,243,0.08); text-align:center; color:rgba(242,246,243,0.35); font-size:0.82rem; }
+  .footer-bottom{ margin-top:70px; padding-top:28px; border-top:1px solid rgba(245,240,232,0.08); text-align:center; color:rgba(245,240,232,0.35); font-size:0.82rem; }
   @media (max-width:820px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:520px){ .footer-grid{ grid-template-columns:1fr; } }
 
@@ -616,7 +616,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
         <div>
           <h3>Location</h3>
-          <p>Shop no 11, Godrej Vannangan, opposite Global Indian International School, Jagatpur, Ahmedabad 382470</p>
+          <p>Shop no-6, Pinecrest Tower, B ABC, near Eden Flat, New Chamunda Society, Godrej Garden City, Chandkheda, Ahmedabad, Gujarat 382470</p>
         </div>
       </div>
       <div class="contact-block reveal">
@@ -663,7 +663,7 @@
 
     <div class="map-wrap reveal">
       <iframe
-        src="https://www.google.com/maps?q=Ahmedabad,+Gujarat,+India"
+        src="https://www.google.com/maps?q=Shop+no-6,+Pinecrest+Tower,+B+ABC,+near+Eden+Flat,+New+Chamunda+Society,+Godrej+Garden+City,+Chandkheda,+Ahmedabad,+Gujarat+382470&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="Fresh Bite location on Google Maps">
@@ -723,12 +723,12 @@
     </div>
     <div>
       <span class="footer-label">Location</span>
-      <p>Shop no 11, Godrej Vannangan, opposite Global Indian International School, Jagatpur, Ahmedabad 382470</p>
+      <p>Shop no-6, Pinecrest Tower, B ABC, near Eden Flat, New Chamunda Society, Godrej Garden City, Chandkheda, Ahmedabad, Gujarat 382470</p>
     </div>
     <div>
       <span class="footer-label">Contact</span>
       <p>093286 02636</p>
-      <p>info@auracafe.in</p>
+      <p>info@freshbitecafe.in</p>
     </div>
     <div>
       <span class="footer-label">Working Hours</span>
@@ -883,7 +883,7 @@
     const testImg = new Image();
     testImg.onerror = function(){
       el.style.backgroundImage = 'none';
-      el.style.background = 'radial-gradient(circle at 50% 30%, #1A2233, #04060A)';
+      el.style.background = 'radial-gradient(circle at 50% 30%, #1C1712, #050403)';
     };
     testImg.src = 'https://i.ibb.co/ycQ5VG5W/Screenshot-20260701-191601-Video-Player.jpg';
   })();
